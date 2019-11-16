@@ -28,7 +28,16 @@ class ShadedText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack();
+    return Stack(
+      fit: StackFit.passthrough,
+      children: <Widget>[
+        Transform(
+          child: shadeBuilder(context,text,shadecolor),
+          transform: Matrix4.translationValues(5.0, 5.0, 0.0),
+        ),
+        shadeBuilder(context, text, textColor),
+      ],
+    );
   }
 
 
